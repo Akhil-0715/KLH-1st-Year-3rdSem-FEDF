@@ -45,7 +45,7 @@ window.updateScore = function (id) {
 
 // Edit Name
 window.editEmployee = function (id) {
-  const name = prompt("Enter new name:");
+  const name = prompt("Enter new name:"); 
 
   const updated = state.allEmployees.map(emp =>
     emp.id === id ? { ...emp, name: name || emp.name } : emp

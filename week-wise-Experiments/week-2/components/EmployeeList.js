@@ -18,7 +18,7 @@ export function EmployeeList(employees) {
         </tr>
       </thead>
 
-      <tbody>
+      <tbody>     
         ${employees.map(emp => `
           <tr>
             <td>${emp.id}</td>
