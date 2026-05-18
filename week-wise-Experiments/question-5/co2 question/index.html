@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Queue Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>Queue Management System</h1>
+
+  <input type="text"
+         id="customerName"
+         placeholder="Enter Customer Name">
+
+  <div class="btn-group">
+
+    <button onclick="addCustomer()">
+      Add Customer
+    </button>
+
+    <button onclick="removeCustomer()">
+      Remove Customer
+    </button>
+
+    <button onclick="firstCustomer()">
+      First Customer
+    </button>
+
+    <button onclick="totalCustomers()">
+      Total Customers
+    </button>
+
+  </div>
+
+  <h3>Queue:</h3>
+
+  <ul id="queueList"></ul>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

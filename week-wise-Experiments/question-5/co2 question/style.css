@@ -1,0 +1,35 @@
+body {
+  font-family: Arial;
+  background: #f4f6f9;
+  text-align: center;
+}
+
+.container {
+  width: 60%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+input {
+  padding: 8px;
+  width: 200px;
+}
+
+button {
+  padding: 8px 15px;
+  margin: 5px;
+  background: blue;
+  color: white;
+  border: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: white;
+  margin: 5px;
+  padding: 10px;
+}
