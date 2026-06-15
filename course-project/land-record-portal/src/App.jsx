@@ -1,10 +1,33 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import UserProvider from "./context/UserContext.jsx";
 import Home from "./pages/Home";
+import Search from "./pages/Search";
+import Mutation from "./pages/Mutation";
+import TrackStatus from "./pages/TrackStatus";
+import Login from "./pages/Login";
+import Admin from "./pages/Admin";
+import EncumbranceCertificate from "./pages/EncumbranceCertificate";
 
 function App() {
   return (
-    <div>
-      <Home />
-    </div>
+    <UserProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+
+          <Route path="/search" element={<Search />} />
+
+          <Route path="/mutation" element={<Mutation />} />
+
+          <Route path="/track" element={<TrackStatus />} />
+
+          <Route path="/login" element={<Login />} />
+
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/ec" element={<EncumbranceCertificate />} />
+        </Routes>
+      </BrowserRouter>
+    </UserProvider>
   );
 }
 

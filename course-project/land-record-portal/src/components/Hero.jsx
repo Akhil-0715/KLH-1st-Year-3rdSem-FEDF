@@ -1,7 +1,11 @@
+import { useNavigate } from "react-router-dom";
+
 function Hero() {
 
+  const navigate = useNavigate();
+
   const handleSearch = () => {
-    alert("Survey search feature coming soon");
+    navigate("/search");
   };
 
   return (

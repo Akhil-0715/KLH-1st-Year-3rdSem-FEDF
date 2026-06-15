@@ -1,7 +1,15 @@
 function Footer() {
   return (
     <footer className="footer">
-      <p>© 2026 Land Records & Pahani Portal</p>
+      <p>Land Records & Pahani Portal</p>
+
+      <p>
+        Digital Land Record Management System
+      </p>
+
+      <p>
+        © 2026 All Rights Reserved
+      </p>
     </footer>
   );
 }

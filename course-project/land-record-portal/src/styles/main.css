@@ -9,78 +9,69 @@ body{
   background:#f4f4f4;
 }
 
-/* NAVBAR */
-
 .navbar{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:20px 50px;
-  background:#1e3a5f;
-  color:white;
+  padding:20px;
+  background:
+  #244c73;
+  color:rgb(255, 255, 255);
+  
 }
 
 .navbar ul{
   display:flex;
   list-style:none;
-  gap:25px;
+  gap:20px;
 }
 
-.navbar li{
-  cursor:pointer;
+.navbar a {
+  color: white;
+  text-decoration: none;
 }
 
-/* HERO */
+.navbar a:hover {
+  text-decoration: underline;
+}
 
 .hero{
   text-align:center;
-  padding:120px 20px;
+  padding:100px 20px;
   background:white;
 }
 
 .hero h1{
-  font-size:48px;
+  font-size:45px;
   margin-bottom:20px;
-  color:#1e3a5f;
 }
 
 .hero p{
-  font-size:20px;
-  margin-bottom:25px;
+  font-size:18px;
+  margin-bottom:20px;
 }
 
 .hero button{
-  padding:14px 28px;
+  padding:12px 25px;
   border:none;
   background:#1e3a5f;
   color:white;
-  border-radius:5px;
   cursor:pointer;
-  font-size:16px;
+  border-radius:5px;
 }
-
-/* SERVICES */
 
 .services{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:25px;
-  padding:60px;
+  gap:20px;
+  padding:50px;
 }
 
 .card{
   background:white;
-  padding:35px;
+  padding:30px;
   border-radius:10px;
-  box-shadow:0px 2px 10px rgba(0,0,0,0.1);
 }
-
-.card h3{
-  margin-bottom:15px;
-  color:#1e3a5f;
-}
-
-/* FOOTER */
 
 .footer{
   text-align:center;
@@ -88,15 +79,74 @@ body{
   background:#1e3a5f;
   color:white;
 }
-.card{
+.navbar li{
   cursor:pointer;
-  transition:0.3s;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .card:hover{
-  transform:translateY(-5px);
+  transform:scale(1.03);
 }
 
-.navbar li:hover{
-  color:#ffd700;
+.stats{
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  padding:40px;
+}
+
+.stat-card{
+  background:white;
+  padding:20px;
+  border-radius:10px;
+  text-align:center;
+  width:180px;
+}
+
+.about{
+  padding:50px;
+  text-align:center;
+}
+
+.about p{
+  max-width:700px;
+  margin:auto;
+}
+
+input,
+textarea {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  background: #1e3a5f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.page-container{
+  min-height: 80vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
 }

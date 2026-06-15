@@ -1,32 +1,25 @@
-function Navbar() {
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../context/UserContext";
 
-  const handleClick = (name) => {
-    alert(`${name} page will be available soon`);
-  };
+function Navbar() {
+  const { user } = useContext(UserContext);
 
   return (
     <nav className="navbar">
+
       <h2>Land Records Portal</h2>
+      {user && <p>Welcome, {user}</p>}
 
       <ul>
-        <li onClick={() => handleClick("Home")}>Home</li>
-
-        <li onClick={() => handleClick("Search")}>
-          Search
-        </li>
-
-        <li onClick={() => handleClick("Services")}>
-          Services
-        </li>
-
-        <li onClick={() => handleClick("Track Status")}>
-          Track Status
-        </li>
-
-        <li onClick={() => handleClick("Login")}>
-          Login
-        </li>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/search">Search</Link></li>
+        <li><Link to="/mutation">Mutation</Link></li>
+        <li><Link to="/track">Track Status</Link></li>
+        <li><Link to="/login">Login</Link></li>
+        <li><Link to="/admin">Admin</Link></li>
       </ul>
+
     </nav>
   );
 }
