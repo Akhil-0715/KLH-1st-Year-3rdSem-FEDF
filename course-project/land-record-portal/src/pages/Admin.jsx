@@ -1,8 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { UserContext } from "../context/UserContext";
+
 
 function Admin() {
+
+  const { user } = useContext(UserContext);
 
   const [applications, setApplications] = useState([]);
 
@@ -36,6 +40,10 @@ function Admin() {
     setApplications(data);
 
   }, []);
+if (
+  !user &&
+  !localStorage.getItem("user")
+) {
 
   return (
     <>
@@ -43,9 +51,35 @@ function Admin() {
 
       <div className="page-container">
 
-        <h1>Admin Dashboard</h1>
+        <h1>Access Denied</h1>
+
+        <p>Please login as Admin first.</p>
+
+      </div>
+
+      <Footer />
+    </>
+  );
+
+}
+
+  return (
+    <>
+      <Navbar />
+
+      <div className="page-container">
+
+        <h1>Welcome Administrator</h1>
+
+        <h2>Land Records Management Dashboard</h2>
+
+        <br />
+
         <h3>Total Applications: {applications.length}</h3>
+
         <p>Pending Applications Management</p>
+
+        <br />
 
         {applications.map((app) => (
 
@@ -61,80 +95,132 @@ function Admin() {
 
             <p>Survey No: {app.surveyNo}</p>
 
-            <p>Status: {app.status}</p>
+            <p>Village: {app.village}</p>
+
+            <p>Area: {app.area}</p>
+
+            {app.status === "Approved" && (
+              <p>
+                <strong>Status:</strong> 🟢 Approved
+              </p>
+            )}
+
+            {app.status === "Pending" && (
+              <p>
+                <strong>Status:</strong> 🟡 Pending
+              </p>
+            )}
+
+            {app.status === "Rejected" && (
+              <p>
+                <strong>Status:</strong> 🔴 Rejected
+              </p>
+            )}
 
             {app.status === "Pending" && (
 
-  <>
+              <>
+                <button
+                  onClick={() => {
 
-            <button
-  onClick={() => {
+                    const updatedApp = {
+                      ...app,
+                      status: "Approved"
+                    };
 
-    const updatedApp = {
-      ...app,
-      status: "Approved"
-    };
+                    const records =
+                      JSON.parse(
+                        localStorage.getItem("landRecords")
+                      ) || [];
 
-    const records =
-  JSON.parse(localStorage.getItem("landRecords")) || [];
+                    const exists = records.find(
+                      (record) =>
+                        record.surveyNo === app.surveyNo
+                    );
 
-const exists = records.find(
-  (record) => record.surveyNo === app.surveyNo
-);
+                    if (!exists) {
 
-if (!exists) {
+                      records.push({
+                        surveyNo: app.surveyNo,
+                        owner: app.owner,
+                        area: app.area,
+                        village: app.village
+                      });
 
-records.push({
-  surveyNo: app.surveyNo,
-  owner: app.owner,
-  area: app.area,
-  village: app.village
-});
-}
-localStorage.setItem(
-  "landRecords",
-  JSON.stringify(records)
-);
+                    }
 
-    localStorage.setItem(
-      app.appId,
-      JSON.stringify(updatedApp)
-    );
+                    localStorage.setItem(
+                      "landRecords",
+                      JSON.stringify(records)
+                    );
 
-    alert("Application Approved");
+                    localStorage.setItem(
+                      app.appId,
+                      JSON.stringify(updatedApp)
+                    );
 
-    window.location.reload();
+                    const notifications =
+                      JSON.parse(
+                        localStorage.getItem("notifications")
+                      ) || [];
 
-  }}
->
-  Approve
-</button>
-<button
-  onClick={() => {
+                    notifications.push(
+                      `✔ Application ${app.appId} approved successfully`
+                    );
 
-    const updatedApp = {
-      ...app,
-      status: "Rejected"
-    };
+                    localStorage.setItem(
+                      "notifications",
+                      JSON.stringify(notifications)
+                    );
 
-    localStorage.setItem(
-      app.appId,
-      JSON.stringify(updatedApp)
-    );
+                    alert("Application Approved");
 
-    alert("Application Rejected");
+                    window.location.reload();
 
-    window.location.reload();
+                  }}
+                >
+                  Approve
+                </button>
 
-  }}
->
-  Reject
-</button>
+                <button
+                  onClick={() => {
 
+                    const updatedApp = {
+                      ...app,
+                      status: "Rejected"
+                    };
 
-  </>
+                    localStorage.setItem(
+                      app.appId,
+                      JSON.stringify(updatedApp)
+                    );
 
-)}
+                    const notifications =
+                      JSON.parse(
+                        localStorage.getItem("notifications")
+                      ) || [];
+
+                    notifications.push(
+                      `❌ Application ${app.appId} rejected`
+                    );
+
+                    localStorage.setItem(
+                      "notifications",
+                      JSON.stringify(notifications)
+                    );
+
+                    alert("Application Rejected");
+
+                    window.location.reload();
+
+                  }}
+                >
+                  Reject
+                </button>
+
+              </>
+
+            )}
 
           </div>
 

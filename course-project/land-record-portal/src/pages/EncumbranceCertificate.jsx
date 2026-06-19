@@ -20,9 +20,11 @@ function EncumbranceCertificate() {
     }
 
     setResult({
+      certificateId: "EC" + land.surveyNo,
       surveyNo: land.surveyNo,
       owner: land.owner,
       status: "No Encumbrance Found",
+      issueDate: new Date().toLocaleDateString(),
       fromDate: "01-01-2020",
       toDate: new Date().toLocaleDateString(),
     });
@@ -56,7 +58,17 @@ function EncumbranceCertificate() {
             className="card"
             style={{ marginTop: "20px" }}
           >
-            <h3>EC Details</h3>
+            <h3>Encumbrance Certificate</h3>
+
+            <p>
+              <strong>Certificate ID:</strong>{" "}
+              {result.certificateId}
+            </p>
+
+            <p>
+              <strong>Issue Date:</strong>{" "}
+              {result.issueDate}
+            </p>
 
             <p>
               <strong>Survey No:</strong>{" "}
@@ -77,6 +89,14 @@ function EncumbranceCertificate() {
               <strong>Period:</strong>{" "}
               {result.fromDate} - {result.toDate}
             </p>
+
+            <br />
+
+            <button
+              onClick={() => window.print()}
+            >
+              Print Certificate
+            </button>
           </div>
         )}
       </div>

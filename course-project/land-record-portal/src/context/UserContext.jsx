@@ -4,7 +4,9 @@ export const UserContext = createContext();
 
 function UserProvider({ children }) {
 
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState(
+    localStorage.getItem("user") || ""
+  );
 
   return (
     <UserContext.Provider

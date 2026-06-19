@@ -67,7 +67,29 @@ function TrackStatus() {
               </>
             )}
 
-            <h2>Status: {application.status}</h2>
+            <div style={{ marginTop: "20px" }}>
+
+  <h3>Application Progress</h3>
+
+  <p>✔ Submitted</p>
+
+  <p>✔ Under Review</p>
+
+  {application.status === "Approved" && (
+    <p>✔ Approved</p>
+  )}
+
+  {application.status === "Rejected" && (
+    <p>❌ Rejected</p>
+  )}
+
+  {application.status === "Pending" && (
+    <p>⏳ Pending Approval</p>
+  )}
+
+</div>
+
+<h2>Status: {application.status}</h2>
 
           </div>
         )}

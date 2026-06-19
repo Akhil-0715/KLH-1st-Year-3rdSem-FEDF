@@ -9,11 +9,15 @@ function Home() {
   return (
     <>
       <Navbar />
-      <Hero />
-<Stats />
-<About />
 
-<Services />
+      <Hero />
+
+      <Stats />
+
+      <About />
+
+      <Services />
+
       <Footer />
     </>
   );

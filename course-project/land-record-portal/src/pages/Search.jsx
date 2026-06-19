@@ -6,70 +6,104 @@ import Footer from "../components/Footer";
 function Search() {
 
   const [surveyNo, setSurveyNo] = useState("");
-
   const [record, setRecord] = useState(null);
-
   const [loading, setLoading] = useState(false);
 
-const handleSearch = async () => {
+  const handleSearch = async () => {
 
-  setLoading(true);
+    setLoading(true);
 
-  const result = await getLandRecord(surveyNo);
+    const result = await getLandRecord(surveyNo);
 
-if (!result) {
-  alert("Survey Number Not Found");
-  setLoading(false);
-  return;
-}
+    if (!result) {
+      alert("Survey Number Not Found");
+      setLoading(false);
+      return;
+    }
 
-setRecord(result);
+    setRecord(result);
 
-  setLoading(false);
-};
+    setLoading(false);
+  };
 
   return (
-  <>
-    <Navbar />
+    <>
+      <Navbar />
 
-    <div className="page-container">
+      <div className="page-container">
 
-      <h1>Search Land Records</h1>
+        <h1>Search Land Records</h1>
 
-      <input
-        type="text"
-        placeholder="Enter Survey Number"
-        value={surveyNo}
-        onChange={(e) => setSurveyNo(e.target.value)}
-      />
+        <input
+          type="text"
+          placeholder="Enter Survey Number"
+          value={surveyNo}
+          onChange={(e) => setSurveyNo(e.target.value)}
+        />
 
-      <br /><br />
+        <br /><br />
 
-      <button onClick={handleSearch}>
-        Search
-      </button>
+        <button onClick={handleSearch}>
+          Search
+        </button>
 
-      {loading && (
-        <h3>Searching Records...</h3>
-      )}
+        {loading && (
+          <h3>Searching Records...</h3>
+        )}
 
-      {record && (
-        <div className="card">
+        {record && (
+          <div className="card">
 
-          <h3>Owner: {record.owner}</h3>
+            <h2>Land Record Certificate</h2>
 
-          <p>Area: {record.area}</p>
+            <hr />
 
-          <p>Village: {record.village}</p>
+            <p>
+              <strong>Certificate ID:</strong>{" "}
+              LR{surveyNo}
+            </p>
 
-        </div>
-      )}
+            <p>
+              <strong>Issue Date:</strong>{" "}
+              {new Date().toLocaleDateString()}
+            </p>
 
-    </div>
+            <p>
+              <strong>Survey Number:</strong>{" "}
+              {surveyNo}
+            </p>
 
-    <Footer />
-  </>
-);
+            <p>
+              <strong>Owner:</strong>{" "}
+              {record.owner}
+            </p>
+
+            <p>
+              <strong>Area:</strong>{" "}
+              {record.area}
+            </p>
+
+            <p>
+              <strong>Village:</strong>{" "}
+              {record.village}
+            </p>
+
+            <br />
+
+            <button
+              onClick={() => window.print()}
+            >
+              Print Record
+            </button>
+
+          </div>
+        )}
+
+      </div>
+
+      <Footer />
+    </>
+  );
 }
 
 export default Search;

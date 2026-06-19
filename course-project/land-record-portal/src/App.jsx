@@ -7,6 +7,8 @@ import TrackStatus from "./pages/TrackStatus";
 import Login from "./pages/Login";
 import Admin from "./pages/Admin";
 import EncumbranceCertificate from "./pages/EncumbranceCertificate";
+import Notifications from "./pages/Notifications";
+import RecentApplications from "./pages/RecentApplications";
 
 function App() {
   return (
@@ -25,6 +27,14 @@ function App() {
 
           <Route path="/admin" element={<Admin />} />
           <Route path="/ec" element={<EncumbranceCertificate />} />
+          <Route
+  path="/applications"
+  element={<RecentApplications />}
+/>
+          <Route
+  path="/notifications"
+  element={<Notifications />}
+/>
         </Routes>
       </BrowserRouter>
     </UserProvider>
